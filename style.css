@@ -1,0 +1,86 @@
+/* General Styles */
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* Custom Card Styles */
+.menu-card {
+  @apply bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer;
+}
+
+.stat-card {
+  @apply p-4 rounded-lg;
+}
+
+/* Button Styles */
+.nav-btn {
+  @apply font-bold py-2 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.nav-btn.primary {
+  @apply bg-blue-500 hover:bg-blue-600 text-white;
+}
+
+.nav-btn.success {
+  @apply bg-green-500 hover:bg-green-600 text-white;
+}
+
+.nav-btn:not(.primary):not(.success) {
+  @apply bg-gray-200 hover:bg-gray-300 text-gray-800;
+}
+
+/* Quiz Option Buttons */
+.option-btn {
+  @apply w-full text-left p-4 rounded-lg border-2 border-gray-200 bg-white;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.option-btn:hover:not(.disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.option-btn.correct {
+  background-color: #d1fae5; /* green-100 */
+  border-color: #10b981; /* green-500 */
+  color: #047857; /* green-800 */
+  font-weight: 600;
+}
+
+.option-btn.incorrect {
+  background-color: #fee2e2; /* red-100 */
+  border-color: #ef4444; /* red-500 */
+  color: #b91c1c; /* red-800 */
+}
+
+.option-btn.disabled {
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+#quiz-explanation {
+  transition: opacity 0.3s;
+}
+
+/* Result Screen Progress Circle */
+.result-ring-bg {
+  fill: none;
+  stroke: #e6e6e6;
+  stroke-width: 3;
+}
+
+.result-ring-progress {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s ease-out;
+}
