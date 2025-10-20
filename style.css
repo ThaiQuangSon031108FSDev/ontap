@@ -85,7 +85,7 @@ body {
     transition: stroke-dashoffset 0.8s ease-out;
 }
 
-/* NEW: Flashcard Styles */
+/* Flashcard Styles */
 .flashcard-container {
     perspective: 1000px;
     height: 250px;
@@ -132,5 +132,10 @@ body {
     border: 2px solid #14B8A6;
     color: #134E4A; /* teal-900 */
     transform: rotateY(180deg);
+}
+
+/* NEW: Reading Input Field Style */
+.reading-input {
+    @apply inline-block w-40 p-1 border-b-2 border-gray-300 focus:border-green-500 outline-none text-center font-semibold text-green-700;
 }
 
