@@ -398,25 +398,60 @@ const quizQuestions = [
 // --- DỮ LIỆU READING ---
 const readingTexts = [
     {
-        title: "Reading Passage 1: Maria's Day",
+        title: "Passage 1: Maria's Day (Easy)",
         passage: `<p>My name is Maria, and I'm a teacher. I work at a school near my house, so I usually walk to work. I have to get up at 6:00 am every day. I have a quick breakfast and leave home at 7:00 am. My school is between a library and a small park. I love my job because I like helping children learn new things. After work, I often go to the park to read a book. I live with my parents and my younger brother, Tom. Tom is a university student. He is very funny and friendly. On weekends, we don't work or study. We sometimes go to the movie theater together.</p>`,
         questions: [
-            { q: "Maria is a student.", options: ["True", "False", "Not Given"], answer: 1 },
-            { q: "How does Maria go to work?", options: ["By bus", "By car", "She walks", "By train"], answer: 2 },
-            { q: "Why does Maria love her job?", options: ["Because she has to get up early", "Because she likes helping children", "Because she lives with her parents", "Because her brother is funny"], answer: 1 },
-            { q: "What does Maria's family sometimes do on weekends?", options: ["They work", "They study", "They go to the movie theater", "They go to the library"], answer: 2 },
-            { q: "Maria's brother, Tom, works as a teacher.", options: ["True", "False", "Not Given"], answer: 1 }
+            { type: 'multiple_choice', q: "Maria is a student.", options: ["True", "False", "Not Given"], answer: 1 },
+            { type: 'multiple_choice', q: "How does Maria go to work?", options: ["By bus", "By car", "She walks", "By train"], answer: 2 },
+            { type: 'multiple_choice', q: "What does Maria's family sometimes do on weekends?", options: ["They work", "They study", "They go to the movie theater", "They go to the library"], answer: 2 }
         ]
     },
     {
-        title: "Reading Passage 2: A Vacation in Da Nang",
+        title: "Passage 2: A Vacation in Da Nang (Easy)",
         passage: `<p>Last year, my family and I went on a vacation to Da Nang. We stayed in a hotel near the beach for three days. The hotel was very big and beautiful. There was a swimming pool, and there were two amazing restaurants. The weather was hot and sunny every day. In the mornings, my father and I went swimming. In the afternoons, my mother and my sister went shopping. In the evenings, we often ate special food at a restaurant. We didn't watch TV because we were very busy. I loved the vacation. It was a wonderful experience. I took a lot of photos. I want to go back there again next year.</p>`,
         questions: [
-            { q: "The family's vacation was last month.", options: ["True", "False", "Not Given"], answer: 1 },
-            { q: "How long did they stay in Da Nang?", options: ["One day", "Two days", "Three days", "One week"], answer: 2 },
-            { q: "What was the weather like?", options: ["Cold and rainy", "Hot and sunny", "Cold and windy", "Hot and cloudy"], answer: 1 },
-            { q: "The writer's family watched TV every evening.", options: ["True", "False", "Not Given"], answer: 1 },
-            { q: "The writer enjoyed the vacation.", options: ["True", "False", "Not Given"], answer: 0 }
+            { type: 'multiple_choice', q: "How long did they stay in Da Nang?", options: ["One day", "Two days", "Three days", "One week"], answer: 2 },
+            { type: 'multiple_choice', q: "What was the weather like?", options: ["Cold and rainy", "Hot and sunny", "Cold and windy", "Hot and cloudy"], answer: 1 },
+            { type: 'multiple_choice', q: "The writer enjoyed the vacation.", options: ["True", "False", "Not Given"], answer: 0 }
+        ]
+    },
+    // NEW, HARDER READING PASSAGE
+    {
+        title: "Passage 3: The History of Coffee (Harder)",
+        passage: `
+            <p>Coffee is one of the most popular drinks in the world. Millions of people drink it every morning. But where did it come from? The story of coffee began in Ethiopia, a country in Africa. A legend says that a goat herder named Kaldi discovered coffee beans after he saw his goats became very energetic after eating berries from a certain tree.</p>
+            <p>From Ethiopia, coffee traveled to the Middle East. By the 15th century, it was grown in Yemen. People in Arabia started to boil the beans to create a dark, hot beverage. They called it 'qahwa'. Coffee houses appeared in cities across the region and became important centers for social activity. People went there to talk, listen to music, and play games.</p>
+            <p>In the 17th century, coffee arrived in Europe. At first, some people were suspicious of this new 'bitter invention of Satan'. However, it soon became very popular. The first European coffee house opened in Venice, Italy, in 1645. Today, you can find coffee shops in almost every city on Earth, from the famous brands to small local cafes.</p>
+        `,
+        questions: [
+            { 
+                type: 'multiple_choice', 
+                q: "According to the legend, who first discovered coffee?", 
+                options: ["An Arabian trader", "An Italian man named Venice", "An Ethiopian goat herder", "A suspicious European"], 
+                answer: 2 
+            },
+            { 
+                type: 'multiple_choice', 
+                q: "What does the word 'beverage' in paragraph 2 mean?", 
+                options: ["A type of food", "A type of plant", "A type of game", "A type of drink"], 
+                answer: 3 
+            },
+            { 
+                type: 'fill_in_blank',
+                q: "In the Middle East, coffee houses became important centers for ____ activity.",
+                answer: "social"
+            },
+            {
+                type: 'fill_in_blank',
+                q: "The first European coffee house opened in the city of ____.",
+                answer: "Venice"
+            },
+            {
+                type: 'multiple_choice',
+                q: "When did coffee arrive in Europe?",
+                options: ["In the 15th century", "In the 16th century", "In the 17th century", "In 1645"],
+                answer: 2
+            }
         ]
     }
 ];
@@ -432,7 +467,7 @@ const reviewContentHTML = `
             </thead>
             <tbody>
                 <tr><td><strong>1</strong></td><td><strong>Arrivals</strong></td><td>Countries, Nationalities, Everyday Items</td><td><strong>Simple Present "be"</strong>, <strong>a/an</strong>, <strong>this/that/these/those</strong></td><td><strong>This is</strong> my wallet. <strong>Are you</strong> from Brazil?</td></tr>
-                <tr><td><strong>2</strong></td><td><strong>Family</strong></td><td>Family members, Appearance, Personality</td><td><strong>Possessives</strong> ('s, my, her), <strong>have/has</strong></td><td><strong>Her</strong> mother <strong>has</strong> curly hair.</td></tr>
+                <tr><td><strong>2</strong></td><td><strong>Family</strong></td><td>Family members, Appearance, Personality</td><td><strong>Possessives</strong> ('s, my, her), <strong>have/has</strong></td><td><strong>Her</strong> mother <b>has</b> curly hair.</td></tr>
                 <tr><td><strong>3</strong></td><td><strong>Days</strong></td><td>Daily routines, Activities, Festivals</td><td><strong>Present Simple</strong>, <strong>Adverbs of Frequency</strong></td><td>I <strong>usually get up</strong> at 7 am.</td></tr>
                 <tr><td><strong>4</strong></td><td><strong>Work</strong></td><td>Jobs, Work activities, Study</td><td><strong>have to/don't have to</strong>, <strong>Present Simple Questions</strong></td><td><strong>Do you have to</strong> wear a uniform?</td></tr>
                 <tr><td><strong>5</strong></td><td><strong>Place</strong></td><td>Rooms, Furniture, Places in town</td><td><strong>There is/are</strong>, <strong>Can/Can't</strong>, <strong>Imperatives</strong></td><td><strong>Is there</strong> a park near your house?</td></tr>
@@ -620,7 +655,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = deck.cards[currentFlashcardIndex];
             flashcardFront.textContent = card.front;
             flashcardBack.textContent = card.back;
-        }, 150); // Delay to allow flip animation to reset
+        }, 150);
 
         flashcardProgressEl.textContent = `Thẻ ${currentFlashcardIndex + 1} / ${deck.cards.length}`;
         flashcardPrevBtn.disabled = currentFlashcardIndex === 0;
@@ -666,17 +701,31 @@ document.addEventListener('DOMContentLoaded', () => {
         readingQuestionsEl.innerHTML = '';
         currentReadingData.questions.forEach((q, qIndex) => {
             const qDiv = document.createElement('div');
-            qDiv.innerHTML = `<p class="font-semibold mb-2">Question ${qIndex + 1}: ${q.q}</p>`;
-            const optsDiv = document.createElement('div');
-            optsDiv.className = 'flex flex-col space-y-2';
-            q.options.forEach((opt, optIndex) => {
-                optsDiv.innerHTML += `
-                    <label class="flex items-center p-3 border rounded-md cursor-pointer hover:bg-gray-100">
-                        <input type="radio" name="reading-q-${qIndex}" value="${optIndex}" class="mr-3 form-radio text-green-500">
-                        ${opt}
-                    </label>`;
-            });
-            qDiv.appendChild(optsDiv);
+            let inputHtml = '';
+
+            // LOGIC MỚI: Kiểm tra loại câu hỏi
+            if (q.type === 'fill_in_blank') {
+                const questionParts = q.q.split('____');
+                const questionText = `${questionParts[0]} <input type="text" id="reading-q-${qIndex}" class="reading-input"> ${questionParts[1] || ''}`;
+                inputHtml = `<p class="font-semibold mb-2">Question ${qIndex + 1}: ${questionText}</p>`;
+            } else { // Mặc định là multiple_choice
+                inputHtml = `<p class="font-semibold mb-2">Question ${qIndex + 1}: ${q.q}</p>`;
+                const optsDiv = document.createElement('div');
+                optsDiv.className = 'flex flex-col space-y-2';
+                q.options.forEach((opt, optIndex) => {
+                    optsDiv.innerHTML += `
+                        <label class="flex items-center p-3 border rounded-md cursor-pointer hover:bg-gray-100">
+                            <input type="radio" name="reading-q-${qIndex}" value="${optIndex}" class="mr-3 form-radio text-green-500">
+                            ${opt}
+                        </label>`;
+                });
+                qDiv.innerHTML = inputHtml;
+                qDiv.appendChild(optsDiv);
+            }
+            if (q.type === 'fill_in_blank') {
+                 qDiv.innerHTML = inputHtml;
+            }
+            
             readingQuestionsEl.appendChild(qDiv);
         });
     }
@@ -692,9 +741,19 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function showReadingResult() {
         let correctCount = 0;
-        currentReadingData.questions.forEach((q, i) => {
-            const selected = document.querySelector(`input[name="reading-q-${i}"]:checked`);
-            if (selected && parseInt(selected.value) === q.answer) correctCount++;
+        currentReadingData.questions.forEach((q, qIndex) => {
+            // LOGIC MỚI: Kiểm tra câu trả lời dựa trên loại câu hỏi
+            if (q.type === 'fill_in_blank') {
+                const inputElement = document.getElementById(`reading-q-${qIndex}`);
+                if (inputElement && inputElement.value.trim().toLowerCase() === q.answer.toLowerCase()) {
+                    correctCount++;
+                }
+            } else { // multiple_choice
+                const selected = document.querySelector(`input[name="reading-q-${qIndex}"]:checked`);
+                if (selected && parseInt(selected.value) === q.answer) {
+                    correctCount++;
+                }
+            }
         });
         const score = Math.round((correctCount / currentReadingData.questions.length) * 100);
         updateStatistics('reading', correctCount, currentReadingData.questions.length);
